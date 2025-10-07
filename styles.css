@@ -42,17 +42,117 @@ body:has(a:hover, button:hover, .project-card:hover) .custom-cursor-outline {
     border-width: 1px;
 }
 
-/* Section visibility animation */
-.section-hidden {
+/* --- NEW: Name Write-on Animation --- */
+#name-svg {
+    /* Prevents the SVG from flashing before the animation starts */
+    visibility: hidden;
+}
+
+#name-svg.visible {
+    visibility: visible;
+}
+
+.name-text {
+    /* Reverted to Inter font for readability, styled for impact */
+    font-family: 'Inter', sans-serif;
+    font-weight: 900;
+    font-size: 80px;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    stroke-width: 1;
+    stroke: #e5e7eb;
+    fill: transparent;
+    stroke-dasharray: 1000;
+    stroke-dashoffset: 1000;
+}
+
+/* This is a tspan, but the class works the same */
+.shekhawat-color {
+    stroke: #22d3ee;
+}
+
+/* Animation declarations now apply to tspans */
+#name-svg.animate .name-text {
+    animation: draw 1.2s ease-out forwards;
+}
+
+#name-svg.animate .name-text:nth-of-type(2) {
+    animation-delay: 0.4s;
+}
+
+#name-svg.animate .name-text:nth-of-type(3) {
+    animation-delay: 0.8s;
+}
+
+@keyframes draw {
+    to {
+        stroke-dashoffset: 0;
+        fill: #e5e7eb;
+    }
+}
+
+/* More specific selector for the colored part */
+#name-svg.animate .name-text.shekhawat-color {
+    animation: draw-cyan 1.2s ease-out 0.8s forwards;
+}
+
+@keyframes draw-cyan {
+    to {
+        stroke-dashoffset: 0;
+        fill: #22d3ee;
+    }
+}
+
+
+/* --- NEW: Geometric Background Canvas --- */
+#geometric-background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    /* Sits behind content, above aurora */
+}
+
+
+/* --- NEW: Scroll-triggered Animations --- */
+.animate-on-scroll {
     opacity: 0;
-    transform: translateY(20px);
+    transform: translateY(30px);
     transition: opacity 0.6s ease-out, transform 0.6s ease-out;
 }
 
-.section-visible {
+.animate-on-scroll.is-visible {
     opacity: 1;
     transform: translateY(0);
 }
+
+/* Staggered delay for project cards */
+.project-card.animate-on-scroll:nth-child(1) {
+    transition-delay: 0.1s;
+}
+
+.project-card.animate-on-scroll:nth-child(2) {
+    transition-delay: 0.2s;
+}
+
+.project-card.animate-on-scroll:nth-child(3) {
+    transition-delay: 0.3s;
+}
+
+.project-card.animate-on-scroll:nth-child(4) {
+    transition-delay: 0.4s;
+}
+
+.project-card.animate-on-scroll:nth-child(5) {
+    transition-delay: 0.5s;
+}
+
+.project-card.animate-on-scroll:nth-child(6) {
+    transition-delay: 0.6s;
+}
+
 
 /* Aurora background effect for hero section */
 .aurora-background {

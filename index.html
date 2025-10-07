@@ -8,6 +8,7 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <!-- Removed Great Vibes font and reverted to Inter -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
 </head>
@@ -49,28 +50,40 @@
     <main>
         <!-- Home Section -->
         <section id="home" class="min-h-screen flex items-center justify-center text-center aurora-background">
+            <!-- Canvas for Geometric Background Animation -->
+            <canvas id="geometric-background"></canvas>
             <div class="container mx-auto px-6 z-10">
+                <!-- Updated SVG to use a two-line layout and prevent clipping -->
                 <h1 class="text-4xl md:text-6xl font-black uppercase tracking-widest">
-                    Yuvraj Singh <span class="text-cyan-400">Shekhawat</span>
+                    <svg id="name-svg" viewBox="0 0 1200 240" xmlns="http://www.w3.org/2000/svg"
+                        class="w-full max-w-5xl mx-auto h-auto">
+                        <text x="50%" y="80" dominant-baseline="middle" text-anchor="middle">
+                            <tspan class="name-text">Yuvraj</tspan>
+                            <tspan class="name-text" dx="25">Singh</tspan>
+                        </text>
+                        <text x="50%" y="180" dominant-baseline="middle" text-anchor="middle">
+                            <tspan class="name-text shekhawat-color">Shekhawat</tspan>
+                        </text>
+                    </svg>
                 </h1>
-                <p class="mt-4 text-lg md:text-xl text-gray-300">
-                    <!-- You can change this description -->
+                <p class="mt-4 text-lg md:text-xl text-gray-300 animate-on-scroll" data-delay="1.5">
                     A passionate student developer creating interesting and innovative experiences.
                 </p>
                 <a href="#projects"
-                    class="mt-8 inline-block bg-cyan-500 text-gray-900 font-bold px-8 py-3 rounded-md hover:bg-cyan-400 transition duration-300">View
-                    My Work</a>
+                    class="mt-8 inline-block bg-cyan-500 text-gray-900 font-bold px-8 py-3 rounded-md hover:bg-cyan-400 transition duration-300 animate-on-scroll"
+                    data-delay="1.7">
+                    View My Work
+                </a>
             </div>
         </section>
 
         <!-- About Section -->
-        <section id="about" class="py-20 md:py-32 section-hidden">
+        <section id="about" class="py-20 md:py-32">
             <div class="container mx-auto px-6">
-                <h2 class="text-3xl md:text-4xl font-bold text-center mb-12">About <span class="text-cyan-400">Me</span>
-                </h2>
+                <h2 class="text-3xl md:text-4xl font-bold text-center mb-12 animate-on-scroll">About <span
+                        class="text-cyan-400">Me</span></h2>
                 <div class="max-w-4xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
-                    <div class="text-gray-300 leading-relaxed space-y-4">
-                        <!-- Update this information about yourself -->
+                    <div class="text-gray-300 leading-relaxed space-y-4 animate-on-scroll" data-delay="0.2">
                         <p>
                             I'm a dedicated and curious 3rd-year (5th Semester) student currently pursuing my degree of
                             BTech Computer Science and Engineering at
@@ -88,10 +101,10 @@
                             a successful career in tech.
                         </p>
                     </div>
-                    <div class="bg-gray-900 p-8 rounded-lg shadow-2xl shadow-cyan-500/10">
+                    <div class="bg-gray-900 p-8 rounded-lg shadow-2xl shadow-cyan-500/10 animate-on-scroll"
+                        data-delay="0.4">
                         <h3 class="text-2xl font-bold text-cyan-400 mb-6">Achievements & Skills</h3>
                         <div class="space-y-4">
-                            <!-- Add your achievements here -->
                             <div class="flex items-start">
                                 <svg class="w-6 h-6 text-cyan-400 mr-3 mt-1 flex-shrink-0" fill="none"
                                     stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
@@ -104,7 +117,6 @@
                                         prototyping, and deadline management.</p>
                                 </div>
                             </div>
-                            <!-- Add more achievements as you get them -->
                             <div class="flex items-start">
                                 <svg class="w-6 h-6 text-cyan-400 mr-3 mt-1 flex-shrink-0" fill="none"
                                     stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
@@ -117,7 +129,6 @@
                                         milestones.</p>
                                 </div>
                             </div>
-                            <!-- Add your skills here -->
                             <div class="flex items-start">
                                 <svg class="w-6 h-6 text-cyan-400 mr-3 mt-1 flex-shrink-0" fill="none"
                                     stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
@@ -126,9 +137,7 @@
                                 </svg>
                                 <div>
                                     <h4 class="font-semibold">Technical Skills</h4>
-                                    <p class="text-sm text-gray-400">HTML, CSS, JavaScript, Java, Python
-                                        <!-- Edit with your skills -->
-                                    </p>
+                                    <p class="text-sm text-gray-400">HTML, CSS, JavaScript, Python, Node.js, Java</p>
                                 </div>
                             </div>
                         </div>
@@ -138,98 +147,111 @@
         </section>
 
         <!-- Projects Section -->
-        <section id="projects" class="py-20 md:py-32 bg-gray-900/50 section-hidden">
+        <section id="projects" class="py-20 md:py-32 bg-gray-900/50">
             <div class="container mx-auto px-6">
-                <h2 class="text-3xl md:text-4xl font-bold text-center mb-12">My <span
+                <h2 class="text-3xl md:text-4xl font-bold text-center mb-12 animate-on-scroll">My <span
                         class="text-cyan-400">Projects</span></h2>
                 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
 
-                    <!-- Project Card 1: Replace with your project details -->
+                    <!-- Added 'animate-on-scroll' class for scroll-triggered animations -->
                     <div
-                        class="project-card bg-gray-900 rounded-lg overflow-hidden shadow-lg hover:shadow-cyan-500/40 transition-all duration-300 transform hover:-translate-y-2">
+                        class="project-card bg-gray-900 rounded-lg overflow-hidden shadow-lg hover:shadow-cyan-500/40 transition-all duration-300 transform hover:-translate-y-2 animate-on-scroll">
                         <div class="p-6">
                             <h3 class="text-xl font-bold mb-2">AI Wind Farm Layout Optimizer</h3>
                             <p class="text-gray-400 mb-4">
-                                <!-- Add a short description of your project here. -->
                                 An AI powered tool to optimize the layout of a wind farm by placing turbines in the most
                                 efficient way.
                             </p>
-                            <!-- Replace '#' with the link to your project on GitHub -->
                             <a href="https://github.com/Gamerater/AI-Wind-Farm-Layout-Optimizer" target="_blank"
                                 class="inline-block text-cyan-400 font-semibold hover:text-cyan-300 transition-colors">View
                                 on GitHub &rarr;</a>
                         </div>
                     </div>
 
-                    <!-- Project Card 2: Replace with your project details -->
                     <div
-                        class="project-card bg-gray-900 rounded-lg overflow-hidden shadow-lg hover:shadow-cyan-500/40 transition-all duration-300 transform hover:-translate-y-2">
+                        class="project-card bg-gray-900 rounded-lg overflow-hidden shadow-lg hover:shadow-cyan-500/40 transition-all duration-300 transform hover:-translate-y-2 animate-on-scroll">
                         <div class="p-6">
                             <h3 class="text-xl font-bold mb-2">Data Visualization Tools</h3>
                             <p class="text-gray-400 mb-4">
-                                <!-- Add a short description of your project here. -->
                                 A collection of tools to visualize data in a more intuitive way.
                             </p>
-                            <!-- Replace '#' with the link to your project on GitHub -->
                             <a href="https://github.com/Gamerater/Data-Visualization-Tools" target="_blank"
                                 class="inline-block text-cyan-400 font-semibold hover:text-cyan-300 transition-colors">View
                                 on GitHub &rarr;</a>
                         </div>
                     </div>
 
-                    <!-- Project Card 3: Replace with your project details -->
                     <div
-                        class="project-card bg-gray-900 rounded-lg overflow-hidden shadow-lg hover:shadow-cyan-500/40 transition-all duration-300 transform hover:-translate-y-2">
+                        class="project-card bg-gray-900 rounded-lg overflow-hidden shadow-lg hover:shadow-cyan-500/40 transition-all duration-300 transform hover:-translate-y-2 animate-on-scroll">
                         <div class="p-6">
                             <h3 class="text-xl font-bold mb-2">This Website</h3>
                             <p class="text-gray-400 mb-4">
-                                <!-- Add a short description of your project here. -->
                                 This is the portfolio website that you are currently viewing.
                             </p>
-                            <!-- Replace '#' with the link to your project on GitHub -->
-                            <a href="https://github.com/Gamerater/Portfolio" target="_blank"
+                            <a href="#" target="_blank"
                                 class="inline-block text-cyan-400 font-semibold hover:text-cyan-300 transition-colors">View
-                                on GitHub &rarr;</a>
+                                on Browser &rarr;</a>
                         </div>
                     </div>
 
-
                     <div
-                        class="project-card bg-gray-900 rounded-lg overflow-hidden shadow-lg hover:shadow-cyan-500/40 transition-all duration-300 transform hover:-translate-y-2">
+                        class="project-card bg-gray-900 rounded-lg overflow-hidden shadow-lg hover:shadow-cyan-500/40 transition-all duration-300 transform hover:-translate-y-2 animate-on-scroll">
                         <div class="p-6">
                             <h3 class="text-xl font-bold mb-2">Interactive Data Analysis Dashboard</h3>
                             <p class="text-gray-400 mb-4">
-                                <!-- Add a short description of your project here. -->
                                 Instantly analyze and visualize your data!
                             </p>
-                            <!-- Replace '#' with the link to your project on GitHub -->
                             <a href="https://github.com/Gamerater/Interactive-Data-Analysis-Dashboard" target="_blank"
                                 class="inline-block text-cyan-400 font-semibold hover:text-cyan-300 transition-colors">View
                                 on GitHub &rarr;</a>
                         </div>
                     </div>
 
-                    <!-- You can copy and paste the project card structure to add more projects -->
+                    <div
+                        class="project-card bg-gray-900 rounded-lg overflow-hidden shadow-lg hover:shadow-cyan-500/40 transition-all duration-300 transform hover:-translate-y-2 animate-on-scroll">
+                        <div class="p-6">
+                            <h3 class="text-xl font-bold mb-2">Simple Python Chatbot</h3>
+                            <p class="text-gray-400 mb-4">
+                                A simple chatbot built using Python.
+                            </p>
+                            <a href="https://github.com/Gamerater/Simple-Chatbot-using-Python" target="_blank"
+                                class="inline-block text-cyan-400 font-semibold hover:text-cyan-300 transition-colors">View
+                                on GitHub &rarr;</a>
+                        </div>
+                    </div>
+
+                    <div
+                        class="project-card bg-gray-900 rounded-lg overflow-hidden shadow-lg hover:shadow-cyan-500/40 transition-all duration-300 transform hover:-translate-y-2 animate-on-scroll">
+                        <div class="p-6">
+                            <h3 class="text-xl font-bold mb-2">Project 6</h3>
+                            <p class="text-gray-400 mb-4">
+                                --- PlaceHolder Text ---
+                            </p>
+                            <a href="#" target="_blank"
+                                class="inline-block text-cyan-400 font-semibold hover:text-cyan-300 transition-colors">View
+                                on GitHub &rarr;</a>
+                        </div>
+                    </div>
 
                 </div>
             </div>
         </section>
 
         <!-- Contact Section -->
-        <section id="contact" class="py-20 md:py-32 section-hidden">
+        <section id="contact" class="py-20 md:py-32">
             <div class="container mx-auto px-6 text-center">
-                <h2 class="text-3xl md:text-4xl font-bold mb-4">Get In <span class="text-cyan-400">Touch</span></h2>
-                <p class="max-w-2xl mx-auto text-gray-400 mb-8">
+                <h2 class="text-3xl md:text-4xl font-bold mb-4 animate-on-scroll">Get In <span
+                        class="text-cyan-400">Touch</span></h2>
+                <p class="max-w-2xl mx-auto text-gray-400 mb-8 animate-on-scroll" data-delay="0.2">
                     I'm always open to discussing new projects, creative ideas, or opportunities to be part of your
                     visions. Feel free to reach out.
                 </p>
-                <!-- Replace with your actual email address -->
                 <a href="mailto:yuvrajsinghshekhawat62@gmail.com"
-                    class="inline-block bg-cyan-500 text-gray-900 font-bold text-lg px-8 py-4 rounded-md hover:bg-cyan-400 transition duration-300">
+                    class="inline-block bg-cyan-500 text-gray-900 font-bold text-lg px-8 py-4 rounded-md hover:bg-cyan-400 transition duration-300 animate-on-scroll"
+                    data-delay="0.4">
                     Say Hello
                 </a>
-                <div class="flex justify-center space-x-6 mt-12">
-                    <!-- Add your social media links here -->
+                <div class="flex justify-center space-x-6 mt-12 animate-on-scroll" data-delay="0.6">
                     <a href="https://github.com/Gamerater" target="_blank"
                         class="text-gray-400 hover:text-cyan-400 transition-colors">
                         <svg class="w-8 h-8" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
@@ -263,5 +285,3 @@
 </body>
 
 </html>
-
-
